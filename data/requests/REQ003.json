@@ -1,0 +1,13 @@
+{
+  "id": "REQ003",
+  "user_id": "USR006",
+  "system_id": "SYS003",
+  "access_level": "read",
+  "request_type": "new_access",
+  "justification": "Need read access to Customer Data Lake to develop new customer analytics features for the mobile banking application. This requires analyzing customer behavior patterns and transaction data.",
+  "requested_by": "USR006",
+  "requested_date": "2024-02-25T14:00:00",
+  "required_by_date": "2024-03-05T09:00:00",
+  "is_emergency": false,
+  "status": "pending"
+}

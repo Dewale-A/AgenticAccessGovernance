@@ -1,0 +1,311 @@
+{
+  "rbac_rules": [
+    {
+      "id": "RBAC001",
+      "role": "branch_manager",
+      "system": "SYS001",
+      "access_levels": ["read", "write"],
+      "conditions": {
+        "department": "Retail Banking",
+        "background_check_required": true
+      }
+    },
+    {
+      "id": "RBAC002",
+      "role": "customer_advisor",
+      "system": "SYS001",
+      "access_levels": ["read"],
+      "conditions": {
+        "department": "Retail Banking",
+        "background_check_required": true
+      }
+    },
+    {
+      "id": "RBAC003",
+      "role": "teller",
+      "system": "SYS001",
+      "access_levels": ["read"],
+      "conditions": {
+        "department": "Retail Banking",
+        "background_check_required": true
+      }
+    },
+    {
+      "id": "RBAC004",
+      "role": "risk_analyst",
+      "system": "SYS002",
+      "access_levels": ["read", "write"],
+      "conditions": {
+        "department": "Risk Management",
+        "model_risk_training_required": true
+      }
+    },
+    {
+      "id": "RBAC005",
+      "role": "risk_manager",
+      "system": "SYS002",
+      "access_levels": ["read", "write", "execute"],
+      "conditions": {
+        "department": "Risk Management",
+        "model_risk_training_required": true
+      }
+    },
+    {
+      "id": "RBAC006",
+      "role": "risk_vp",
+      "system": "SYS002",
+      "access_levels": ["read", "write", "execute"],
+      "conditions": {
+        "department": "Risk Management",
+        "model_risk_training_required": true
+      }
+    },
+    {
+      "id": "RBAC007",
+      "role": "software_developer",
+      "system": "SYS003",
+      "access_levels": ["read"],
+      "conditions": {
+        "department": "IT/Engineering",
+        "privacy_training_required": true,
+        "cross_department_approval": true
+      }
+    },
+    {
+      "id": "RBAC008",
+      "role": "database_admin",
+      "system": "SYS003",
+      "access_levels": ["read", "write", "admin"],
+      "conditions": {
+        "department": "IT/Engineering",
+        "privacy_training_required": true
+      }
+    },
+    {
+      "id": "RBAC009",
+      "role": "trader",
+      "system": "SYS004",
+      "access_levels": ["read", "execute"],
+      "conditions": {
+        "department": "Treasury",
+        "sox_certification_required": true
+      }
+    },
+    {
+      "id": "RBAC010",
+      "role": "treasury_analyst",
+      "system": "SYS004",
+      "access_levels": ["read"],
+      "conditions": {
+        "department": "Treasury",
+        "sox_certification_required": true
+      }
+    },
+    {
+      "id": "RBAC011",
+      "role": "compliance_officer",
+      "system": "SYS005",
+      "access_levels": ["read", "write"],
+      "conditions": {
+        "department": "Compliance",
+        "privacy_training_required": true
+      }
+    },
+    {
+      "id": "RBAC012",
+      "role": "compliance_analyst",
+      "system": "SYS005",
+      "access_levels": ["read"],
+      "conditions": {
+        "department": "Compliance",
+        "privacy_training_required": true
+      }
+    },
+    {
+      "id": "RBAC013",
+      "role": "risk_analyst",
+      "system": "SYS006",
+      "access_levels": ["read", "write", "execute"],
+      "conditions": {
+        "department": "Risk Management",
+        "model_risk_training_required": true
+      }
+    },
+    {
+      "id": "RBAC014",
+      "role": "ciso",
+      "system": "SYS007",
+      "access_levels": ["read", "write", "admin"],
+      "conditions": {
+        "department": "IT/Engineering",
+        "privacy_training_required": true
+      }
+    },
+    {
+      "id": "RBAC015",
+      "role": "compliance_officer",
+      "system": "SYS004",
+      "access_levels": ["read"],
+      "conditions": {
+        "department": "Compliance",
+        "emergency_access_allowed": true
+      }
+    }
+  ],
+  "sensitivity_rules": [
+    {
+      "id": "SENS001",
+      "sensitivity_tier": "Restricted",
+      "allowed_roles": ["branch_manager", "risk_manager", "risk_vp", "compliance_director", "ciso", "treasury_vp"],
+      "conditions": {
+        "background_check_required": true,
+        "manager_approval_required": true
+      }
+    },
+    {
+      "id": "SENS002",
+      "sensitivity_tier": "Confidential",
+      "allowed_roles": ["risk_analyst", "risk_manager", "risk_vp", "compliance_officer", "compliance_analyst", "database_admin", "system_admin"],
+      "conditions": {
+        "training_certification_required": true
+      }
+    },
+    {
+      "id": "SENS003",
+      "sensitivity_tier": "Internal",
+      "allowed_roles": ["all_employees"],
+      "conditions": {}
+    }
+  ],
+  "sod_rules": [
+    {
+      "id": "SOD001",
+      "name": "Trade Execution and Settlement Segregation",
+      "description": "Users cannot have both trade execution and settlement access to prevent fraud",
+      "conflicting_systems": ["SYS004", "SYS009"],
+      "severity": "HIGH",
+      "exceptions_allowed": false
+    },
+    {
+      "id": "SOD002",
+      "name": "Model Development and Validation Segregation",
+      "description": "Model developers cannot validate their own models",
+      "conflicting_systems": ["SYS002", "SYS010"],
+      "conflicting_roles": ["risk_analyst"],
+      "severity": "HIGH",
+      "exceptions_allowed": false
+    },
+    {
+      "id": "SOD003",
+      "name": "Access Administration and Audit Review Segregation",
+      "description": "Access administrators cannot review their own access decisions",
+      "conflicting_systems": ["SYS007", "SYS011"],
+      "severity": "HIGH",
+      "exceptions_allowed": false
+    },
+    {
+      "id": "SOD004",
+      "name": "Data Entry and Approval Segregation",
+      "description": "Users cannot both enter and approve the same financial data",
+      "conflicting_systems": ["SYS001", "SYS012"],
+      "conflicting_roles": ["teller", "customer_advisor"],
+      "severity": "MEDIUM",
+      "exceptions_allowed": true,
+      "exception_conditions": ["manager_approval", "dual_control"]
+    },
+    {
+      "id": "SOD005",
+      "name": "Customer Account Management and Credit Approval",
+      "description": "Customer-facing staff cannot approve their own credit decisions",
+      "conflicting_systems": ["SYS001", "SYS002"],
+      "conflicting_roles": ["customer_advisor", "branch_manager"],
+      "severity": "MEDIUM",
+      "exceptions_allowed": true,
+      "exception_conditions": ["senior_manager_approval"]
+    }
+  ],
+  "regulatory_constraints": [
+    {
+      "id": "REG001",
+      "regulator": "PIPEDA",
+      "regulation_name": "Personal Information Protection and Electronic Documents Act",
+      "description": "Privacy training required for PII access",
+      "applies_to_systems": ["SYS003", "SYS007"],
+      "certification_required": "privacy_training",
+      "certification_validity_days": 365,
+      "is_mandatory": true,
+      "violation_severity": "HIGH"
+    },
+    {
+      "id": "REG002",
+      "regulator": "SR 11-7",
+      "regulation_name": "Supervisory Guidance on Model Risk Management",
+      "description": "Model risk training required for model access",
+      "applies_to_systems": ["SYS002", "SYS006", "SYS010"],
+      "certification_required": "model_risk_training",
+      "certification_validity_days": 365,
+      "is_mandatory": true,
+      "violation_severity": "HIGH"
+    },
+    {
+      "id": "REG003",
+      "regulator": "OSFI",
+      "regulation_name": "OSFI Guideline B-13",
+      "description": "Background check required for core banking access",
+      "applies_to_systems": ["SYS001", "SYS005", "SYS011"],
+      "certification_required": "background_check",
+      "certification_validity_days": 1095,
+      "is_mandatory": true,
+      "violation_severity": "HIGH"
+    },
+    {
+      "id": "REG004",
+      "regulator": "SOX",
+      "regulation_name": "Sarbanes-Oxley Act",
+      "description": "Annual certification required for financial reporting access",
+      "applies_to_systems": ["SYS004", "SYS009", "SYS012"],
+      "certification_required": "sox_certification",
+      "certification_validity_days": 365,
+      "is_mandatory": true,
+      "violation_severity": "HIGH"
+    },
+    {
+      "id": "REG005",
+      "regulator": "IIROC",
+      "regulation_name": "Investment Industry Regulatory Organization",
+      "description": "Trading certification required for market access",
+      "applies_to_systems": ["SYS004", "SYS009"],
+      "applies_to_roles": ["trader", "treasury_analyst", "treasury_vp"],
+      "certification_required": "trading_certification",
+      "certification_validity_days": 730,
+      "is_mandatory": true,
+      "violation_severity": "HIGH"
+    }
+  ],
+  "department_policies": [
+    {
+      "id": "DEPT001",
+      "department": "Risk Management",
+      "policy": "All risk model access requires dual approval from risk manager and compliance",
+      "systems_affected": ["SYS002", "SYS006", "SYS010"]
+    },
+    {
+      "id": "DEPT002",
+      "department": "Treasury",
+      "policy": "Trading system access limited to business hours and requires manager approval",
+      "systems_affected": ["SYS004", "SYS009"]
+    },
+    {
+      "id": "DEPT003",
+      "department": "IT/Engineering",
+      "policy": "Cross-department data access requires CISO approval and business justification",
+      "systems_affected": ["SYS003", "SYS007"]
+    },
+    {
+      "id": "DEPT004",
+      "department": "Compliance",
+      "policy": "Emergency access allowed with immediate notification to compliance director",
+      "systems_affected": ["all"]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "REQ005",
+  "user_id": "USR021",
+  "system_id": "SYS003",
+  "access_level": "read",
+  "request_type": "new_access",
+  "justification": "Need read access to Customer Data Lake to perform data quality validation and implement new customer segmentation algorithms for the marketing team.",
+  "requested_by": "USR021",
+  "requested_date": "2024-02-25T13:20:00",
+  "required_by_date": "2024-03-10T09:00:00",
+  "is_emergency": false,
+  "status": "pending"
+}

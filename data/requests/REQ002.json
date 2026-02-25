@@ -1,0 +1,13 @@
+{
+  "id": "REQ002",
+  "user_id": "USR007",
+  "system_id": "SYS009",
+  "access_level": "write",
+  "request_type": "new_access",
+  "justification": "Need write access to Trade Settlement System to expedite settlement processes during high-volume trading periods.",
+  "requested_by": "USR007",
+  "requested_date": "2024-02-25T11:30:00",
+  "required_by_date": "2024-02-28T09:00:00",
+  "is_emergency": false,
+  "status": "pending"
+}

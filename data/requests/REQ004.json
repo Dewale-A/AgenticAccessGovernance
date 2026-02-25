@@ -1,0 +1,14 @@
+{
+  "id": "REQ004",
+  "user_id": "USR005",
+  "system_id": "SYS004",
+  "access_level": "read",
+  "request_type": "emergency_access",
+  "justification": "URGENT: Need immediate read access to Trading Platform to investigate suspicious trading activity flagged by our AML system. Potential market manipulation case requiring immediate compliance review.",
+  "requested_by": "USR005",
+  "requested_date": "2024-02-25T16:45:00",
+  "required_by_date": "2024-02-25T17:00:00",
+  "is_emergency": true,
+  "temporary_until": "2024-02-26T17:00:00",
+  "status": "pending"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "REQ001",
+  "user_id": "USR004",
+  "system_id": "SYS002",
+  "access_level": "read",
+  "request_type": "new_access",
+  "justification": "Need read access to Credit Risk Models to perform quarterly risk assessment analysis and generate compliance reports for OSFI regulatory submission.",
+  "requested_by": "USR004",
+  "requested_date": "2024-02-25T10:00:00",
+  "required_by_date": "2024-03-01T09:00:00",
+  "is_emergency": false,
+  "status": "pending"
+}
