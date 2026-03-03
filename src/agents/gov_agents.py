@@ -14,7 +14,7 @@ from src.tools.sod_validator import validate_segregation_of_duties
 from src.tools.risk_scorer import score_access_risk
 from src.tools.entitlement_lookup import lookup_user_entitlements
 from src.tools.audit_logger import log_decision
-from src.tools.certification_checker import check_certifications
+from src.tools.certification_checker import check_user_certifications
 from src.config.settings import settings
 
 logger = logging.getLogger(__name__)
@@ -270,7 +270,7 @@ class GovernanceAgents:
             that improper certification management can lead to regulatory violations and business 
             disruptions.""",
             tools=[
-                check_certifications,
+                check_user_certifications,
                 self.file_read_tool,
                 self.json_search_tool
             ],
