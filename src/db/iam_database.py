@@ -316,8 +316,11 @@ class IAMDatabase:
         with open(users_file, 'r') as f:
             users_data = json.load(f)
         
+        # Handle both list and dict formats
+        users_list = users_data if isinstance(users_data, list) else users_data.get("users", [])
+        
         async with aiosqlite.connect(self.db_path) as db:
-            for user in users_data.get("users", []):
+            for user in users_list:
                 await db.execute("""
                     INSERT OR REPLACE INTO users (
                         id, name, email, department, role, title, hire_date,
@@ -337,7 +340,7 @@ class IAMDatabase:
                     user.get("last_login")
                 ))
             await db.commit()
-            logger.info(f"Loaded {len(users_data.get('users', []))} users")
+            logger.info(f"Loaded {len(users_list)} users")
     
     async def _load_systems(self):
         """Load systems from JSON file."""
@@ -349,8 +352,11 @@ class IAMDatabase:
         with open(systems_file, 'r') as f:
             systems_data = json.load(f)
         
+        # Handle both list and dict formats
+        systems_list = systems_data if isinstance(systems_data, list) else systems_data.get("systems", [])
+        
         async with aiosqlite.connect(self.db_path) as db:
-            for system in systems_data.get("systems", []):
+            for system in systems_list:
                 await db.execute("""
                     INSERT OR REPLACE INTO systems (
                         id, name, description, sensitivity_tier, data_classification,
@@ -366,7 +372,7 @@ class IAMDatabase:
                     system.get("audit_required", True)
                 ))
             await db.commit()
-            logger.info(f"Loaded {len(systems_data.get('systems', []))} systems")
+            logger.info(f"Loaded {len(systems_list)} systems")
     
     async def _load_policies(self):
         """Load policies from JSON file."""
@@ -440,8 +446,11 @@ class IAMDatabase:
         with open(entitlements_file, 'r') as f:
             entitlements_data = json.load(f)
         
+        # Handle both list and dict formats
+        entitlements_list = entitlements_data if isinstance(entitlements_data, list) else entitlements_data.get("entitlements", [])
+        
         async with aiosqlite.connect(self.db_path) as db:
-            for entitlement in entitlements_data.get("entitlements", []):
+            for entitlement in entitlements_list:
                 await db.execute("""
                     INSERT OR REPLACE INTO entitlements (
                         id, user_id, system_id, access_level, granted_date,
@@ -454,7 +463,7 @@ class IAMDatabase:
                     entitlement.get("last_used"), entitlement.get("is_active", True)
                 ))
             await db.commit()
-            logger.info(f"Loaded {len(entitlements_data.get('entitlements', []))} entitlements")
+            logger.info(f"Loaded {len(entitlements_list)} entitlements")
     
     async def _load_sample_requests(self):
         """Load sample access requests from JSON files."""
