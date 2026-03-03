@@ -6,12 +6,11 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 
-from crewai import tool
 
 logger = logging.getLogger(__name__)
 
 
-@tool("Entitlement Lookup")
+# Simple function instead of tool decorator
 def lookup_user_entitlements(user_id: str, include_history: bool = True) -> Dict[str, Any]:
     """
     Look up user's current entitlements and access history.
@@ -75,7 +74,7 @@ def lookup_user_entitlements(user_id: str, include_history: bool = True) -> Dict
         }
 
 
-@tool("System Access Check")
+# Simple function instead of tool decorator
 def check_system_access(user_id: str, system_id: str) -> Dict[str, Any]:
     """
     Check if user has access to a specific system and access details.

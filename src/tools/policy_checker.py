@@ -6,13 +6,9 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 
-from crewai import tool
 from src.models.policy import PolicyEvaluation, ActionType
 
 logger = logging.getLogger(__name__)
-
-
-@tool("Policy Checker")
 def check_policies(request_data: Dict[str, Any], user_data: Dict[str, Any], system_data: Dict[str, Any]) -> Dict[str, Any]:
     """
     Check access request against RBAC rules, sensitivity policies, and departmental policies.

@@ -6,13 +6,12 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 
-from crewai import tool
 from src.config.settings import settings
 
 logger = logging.getLogger(__name__)
 
 
-@tool("Certification Checker")
+# Simple function instead of tool decorator
 def check_user_certifications(user_id: str, required_certifications: List[str] = None) -> Dict[str, Any]:
     """
     Check user's training certifications and compliance status.
@@ -116,7 +115,7 @@ def check_user_certifications(user_id: str, required_certifications: List[str] =
         }
 
 
-@tool("Bulk Certification Review")
+# Simple function instead of tool decorator
 def review_department_certifications(department: str = None, expired_only: bool = False) -> Dict[str, Any]:
     """
     Review certifications for a department or all users.
@@ -220,7 +219,7 @@ def review_department_certifications(department: str = None, expired_only: bool 
         }
 
 
-@tool("Certification Renewal Reminder")
+# Simple function instead of tool decorator
 def generate_renewal_reminders(days_ahead: int = 30) -> Dict[str, Any]:
     """
     Generate renewal reminders for certifications expiring soon.

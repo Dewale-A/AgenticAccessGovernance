@@ -6,13 +6,12 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 
-from crewai import tool
 from src.models.access_request import AuditRecord
 
 logger = logging.getLogger(__name__)
 
 
-@tool("Audit Logger")
+# Simple function instead of tool decorator
 def log_decision(request_id: str, agent_name: str, action: str, decision: str, 
                 reasoning: str, context_data: Dict[str, Any] = None,
                 confidence_score: float = None) -> Dict[str, Any]:
@@ -113,7 +112,7 @@ def log_decision(request_id: str, agent_name: str, action: str, decision: str,
         }
 
 
-@tool("Audit Trail Retriever")
+# Simple function instead of tool decorator
 def get_audit_trail(request_id: str) -> Dict[str, Any]:
     """
     Retrieve complete audit trail for an access request.
@@ -165,7 +164,7 @@ def get_audit_trail(request_id: str) -> Dict[str, Any]:
         }
 
 
-@tool("Compliance Report Generator")
+# Simple function instead of tool decorator
 def generate_compliance_report(start_date: str = None, end_date: str = None, 
                              request_ids: List[str] = None) -> Dict[str, Any]:
     """
