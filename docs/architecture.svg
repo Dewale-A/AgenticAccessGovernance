@@ -174,7 +174,7 @@
   <!-- Dashed lines from agent row to tools -->
   <path d="M 365 460 L 110 560" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
   <path d="M 625 460 L 245 560" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
-  <path d="M 885 250 L 380 560" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+  <path d="M 885 250 L 885 500 L 380 500 L 380 560" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
   <path d="M 625 460 L 515 560" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
   <path d="M 885 460 L 650 560" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
 
