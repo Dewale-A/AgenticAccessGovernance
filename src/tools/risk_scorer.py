@@ -6,12 +6,10 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 
-from crewai_tools import tool
 
 logger = logging.getLogger(__name__)
 
 
-@tool
 def score_access_risk(request_data: Dict[str, Any], user_data: Dict[str, Any], 
                      system_data: Dict[str, Any], policy_analysis: Dict[str, Any],
                      sod_analysis: Dict[str, Any]) -> Dict[str, Any]:

@@ -13,19 +13,11 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 from crewai import Agent
-from crewai_tools import FileReadTool, JSONSearchTool
+from crewai_tools import FileReadTool
 
-from src.tools.policy_checker import check_policies
-from src.tools.sod_validator import validate_segregation_of_duties
-from src.tools.risk_scorer import score_access_risk
-from src.tools.entitlement_lookup import lookup_user_entitlements
-from src.tools.audit_logger import log_decision
-from src.tools.certification_checker import check_user_certifications
 from src.config.settings import settings
 
 logger = logging.getLogger(__name__)
-
-
 class GovernanceAgents:
     """Factory class for creating governance agents with specialized tools and expertise."""
     
@@ -33,7 +25,6 @@ class GovernanceAgents:
         """Initialize the agents factory with common tools."""
         # Common tools available to all agents
         self.file_read_tool = FileReadTool()
-        self.json_search_tool = JSONSearchTool()
     
     def request_intake_agent(self) -> Agent:
         """
@@ -61,11 +52,7 @@ class GovernanceAgents:
             
             You work with strict attention to detail and understand the critical importance of 
             accurate data in financial services access governance.""",
-            tools=[
-                self.file_read_tool,
-                self.json_search_tool,
-                lookup_user_entitlements
-            ],
+            tools=[self.file_read_tool],
             verbose=True,
             allow_delegation=False,
             llm=settings.openai_model
@@ -99,11 +86,7 @@ class GovernanceAgents:
             You are meticulous in policy interpretation and never compromise on regulatory compliance. 
             You understand that policy violations in financial services can lead to serious regulatory 
             consequences and always err on the side of caution.""",
-            tools=[
-                check_policies,
-                self.file_read_tool,
-                self.json_search_tool
-            ],
+            tools=[self.file_read_tool],
             verbose=True,
             allow_delegation=False,
             llm=settings.openai_model
@@ -138,12 +121,7 @@ class GovernanceAgents:
             You approach risk assessment with scientific rigor, considering both quantitative metrics 
             and qualitative factors. You understand that in financial services, risk assessment must 
             be thorough, defensible, and aligned with regulatory expectations.""",
-            tools=[
-                score_access_risk,
-                validate_segregation_of_duties,
-                self.file_read_tool,
-                self.json_search_tool
-            ],
+            tools=[self.file_read_tool],
             verbose=True,
             allow_delegation=False,
             llm=settings.openai_model
@@ -179,11 +157,7 @@ class GovernanceAgents:
             business impact, regulatory requirements, and organizational efficiency. You understand 
             that different types of access require different approval paths and that automation 
             should be balanced with appropriate human oversight.""",
-            tools=[
-                self.file_read_tool,
-                self.json_search_tool,
-                log_decision
-            ],
+            tools=[self.file_read_tool],
             verbose=True,
             allow_delegation=False,
             llm=settings.openai_model
@@ -219,11 +193,7 @@ class GovernanceAgents:
             audit trails in financial services must withstand regulatory scrutiny. You ensure that 
             every decision is fully documented with clear reasoning, supporting evidence, and 
             appropriate context for future review.""",
-            tools=[
-                log_decision,
-                self.file_read_tool,
-                self.json_search_tool
-            ],
+            tools=[self.file_read_tool],
             verbose=True,
             allow_delegation=False,
             llm=settings.openai_model
@@ -260,11 +230,7 @@ class GovernanceAgents:
             and the specific training needed for different types of system access. You understand 
             that improper certification management can lead to regulatory violations and business 
             disruptions.""",
-            tools=[
-                check_user_certifications,
-                self.file_read_tool,
-                self.json_search_tool
-            ],
+            tools=[self.file_read_tool],
             verbose=True,
             allow_delegation=False,
             llm=settings.openai_model
