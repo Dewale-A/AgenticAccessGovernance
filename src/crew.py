@@ -10,7 +10,6 @@ from datetime import datetime
 from pathlib import Path
 
 from crewai import Crew, Process
-from crewai.project import CrewBase, agent, task, crew
 
 from src.agents.gov_agents import GovernanceAgents
 from src.tasks.gov_tasks import GovernanceTasks
@@ -20,12 +19,8 @@ from src.config.settings import settings
 logger = logging.getLogger(__name__)
 
 
-@CrewBase
 class AccessGovernanceCrew:
     """Main crew class that orchestrates the access governance workflow."""
-    
-    agents_config = 'config/agents.yaml'
-    tasks_config = 'config/tasks.yaml'
     
     def __init__(self):
         """Initialize the governance crew with agents and database connection."""
@@ -40,12 +35,12 @@ class AccessGovernanceCrew:
             await self.db.initialize()
             logger.info("AccessGovernanceCrew initialized with database connection")
     
-    @agent
+
     def request_intake_agent(self):
         """Create the Request Intake Agent."""
         return self.governance_agents.request_intake_agent()
     
-    @agent
+
     def policy_validation_agent(self):
         """Create the Policy Validation Agent."""
         return self.governance_agents.policy_validation_agent()
@@ -55,57 +50,73 @@ class AccessGovernanceCrew:
         """Create the Risk Scoring Agent."""
         return self.governance_agents.risk_scoring_agent()
     
-    @agent
+
     def approval_routing_agent(self):
         """Create the Approval Routing Agent."""
         return self.governance_agents.approval_routing_agent()
     
-    @agent
+
     def audit_trail_agent(self):
         """Create the Audit Trail Agent."""
         return self.governance_agents.audit_trail_agent()
     
-    @agent
+
     def certification_review_agent(self):
         """Create the Certification Review Agent."""
         return self.governance_agents.certification_review_agent()
     
-    @task
+
     def request_intake_task(self):
         """Create the request intake task."""
         return self.governance_tasks.request_intake_task()
     
-    @task
+
     def policy_validation_task(self):
         """Create the policy validation task."""
         return self.governance_tasks.policy_validation_task()
     
-    @task
+
     def risk_scoring_task(self):
         """Create the risk scoring task.""" 
         return self.governance_tasks.risk_scoring_task()
     
-    @task
+
     def approval_routing_task(self):
         """Create the approval routing task."""
         return self.governance_tasks.approval_routing_task()
     
-    @task
+
     def audit_trail_task(self):
         """Create the audit trail task."""
         return self.governance_tasks.audit_trail_task()
     
-    @task
+
     def certification_review_task(self):
         """Create the certification review task."""
         return self.governance_tasks.certification_review_task()
     
-    @crew
+
     def crew(self) -> Crew:
         """Create and configure the governance crew."""
+        agents = [
+            self.request_intake_agent(),
+            self.policy_validation_agent(),
+            self.risk_scoring_agent(),
+            self.approval_routing_agent(),
+            self.audit_trail_agent(),
+            self.certification_review_agent(),
+        ]
+        tasks = [
+            self.request_intake_task(),
+            self.policy_validation_task(),
+            self.risk_scoring_task(),
+            self.approval_routing_task(),
+            self.audit_trail_task(),
+            self.certification_review_task(),
+        ]
         return Crew(
-            agents=self.agents,
-            tasks=self.tasks,
+            agents=agents,
+            tasks=tasks,
             process=Process.sequential,
             verbose=True,
             memory=True,
