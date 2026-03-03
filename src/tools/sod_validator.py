@@ -5,7 +5,7 @@ import logging
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 
-from crewai_tools import tool
+from crewai import tool
 
 logger = logging.getLogger(__name__)
 

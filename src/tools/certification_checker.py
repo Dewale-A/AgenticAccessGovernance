@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 
-from crewai_tools import tool
+from crewai import tool
 from src.config.settings import settings
 
 logger = logging.getLogger(__name__)
