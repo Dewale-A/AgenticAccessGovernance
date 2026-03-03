@@ -12,7 +12,7 @@ from crewai_tools import FileReadTool, JSONSearchTool
 from src.tools.policy_checker import check_policies
 from src.tools.sod_validator import validate_segregation_of_duties
 from src.tools.risk_scorer import score_access_risk
-from src.tools.entitlement_lookup import lookup_entitlements
+from src.tools.entitlement_lookup import lookup_user_entitlements
 from src.tools.audit_logger import log_decision
 from src.tools.certification_checker import check_certifications
 from src.config.settings import settings
@@ -58,7 +58,7 @@ class GovernanceAgents:
             tools=[
                 self.file_read_tool,
                 self.json_search_tool,
-                lookup_entitlements
+                lookup_user_entitlements
             ],
             verbose=True,
             allow_delegation=False,
