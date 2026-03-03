@@ -6,12 +6,13 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 
+from crewai_tools import tool
 from src.models.access_request import AuditRecord
 
 logger = logging.getLogger(__name__)
 
 
-# Simple function instead of tool decorator
+@tool
 def log_decision(request_id: str, agent_name: str, action: str, decision: str, 
                 reasoning: str, context_data: Dict[str, Any] = None,
                 confidence_score: float = None) -> Dict[str, Any]:

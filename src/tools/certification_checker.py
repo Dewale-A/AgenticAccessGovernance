@@ -6,12 +6,13 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 
+from crewai_tools import tool
 from src.config.settings import settings
 
 logger = logging.getLogger(__name__)
 
 
-# Simple function instead of tool decorator
+@tool
 def check_user_certifications(user_id: str, required_certifications: List[str] = None) -> Dict[str, Any]:
     """
     Check user's training certifications and compliance status.

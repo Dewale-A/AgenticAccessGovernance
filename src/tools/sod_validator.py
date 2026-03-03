@@ -5,11 +5,12 @@ import logging
 from typing import Dict, List, Any, Optional
 from pathlib import Path
 
+from crewai_tools import tool
 
 logger = logging.getLogger(__name__)
 
 
-# Simple function instead of tool decorator
+@tool
 def validate_segregation_of_duties(request_data: Dict[str, Any], user_data: Dict[str, Any], 
                                  current_entitlements: List[Dict[str, Any]]) -> Dict[str, Any]:
     """

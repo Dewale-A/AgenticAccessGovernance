@@ -68,10 +68,7 @@ class GovernanceAgents:
             ],
             verbose=True,
             allow_delegation=False,
-            llm_config={
-                "model": settings.openai_model,
-                "temperature": 0.1
-            }
+            llm=settings.openai_model
         )
     
     def policy_validation_agent(self) -> Agent:
@@ -109,10 +106,7 @@ class GovernanceAgents:
             ],
             verbose=True,
             allow_delegation=False,
-            llm_config={
-                "model": settings.openai_model,
-                "temperature": 0.1
-            }
+            llm=settings.openai_model
         )
     
     def risk_scoring_agent(self) -> Agent:
@@ -152,10 +146,7 @@ class GovernanceAgents:
             ],
             verbose=True,
             allow_delegation=False,
-            llm_config={
-                "model": settings.openai_model,
-                "temperature": 0.2
-            }
+            llm=settings.openai_model
         )
     
     def approval_routing_agent(self) -> Agent:
@@ -195,10 +186,7 @@ class GovernanceAgents:
             ],
             verbose=True,
             allow_delegation=False,
-            llm_config={
-                "model": settings.openai_model,
-                "temperature": 0.3
-            }
+            llm=settings.openai_model
         )
     
     def audit_trail_agent(self) -> Agent:
@@ -238,10 +226,7 @@ class GovernanceAgents:
             ],
             verbose=True,
             allow_delegation=False,
-            llm_config={
-                "model": settings.openai_model,
-                "temperature": 0.1
-            }
+            llm=settings.openai_model
         )
     
     def certification_review_agent(self) -> Agent:
@@ -282,10 +267,7 @@ class GovernanceAgents:
             ],
             verbose=True,
             allow_delegation=False,
-            llm_config={
-                "model": settings.openai_model,
-                "temperature": 0.1
-            }
+            llm=settings.openai_model
         )
     
     def get_all_agents(self) -> List[Agent]:

@@ -28,95 +28,37 @@ class AccessGovernanceCrew:
         self.governance_agents = GovernanceAgents()
         self.governance_tasks = GovernanceTasks()
         
+        # Initialize agents and tasks once to avoid duplication
+        self.agents = [
+            self.governance_agents.request_intake_agent(),
+            self.governance_agents.policy_validation_agent(),
+            self.governance_agents.risk_scoring_agent(),
+            self.governance_agents.approval_routing_agent(),
+            self.governance_agents.audit_trail_agent(),
+            self.governance_agents.certification_review_agent(),
+        ]
+        
+        self.tasks = [
+            self.governance_tasks.request_intake_task(),
+            self.governance_tasks.policy_validation_task(),
+            self.governance_tasks.risk_scoring_task(),
+            self.governance_tasks.approval_routing_task(),
+            self.governance_tasks.audit_trail_task(),
+            self.governance_tasks.certification_review_task(),
+        ]
+        
     async def initialize(self):
         """Initialize database connection and agents."""
         if not self.db:
             self.db = IAMDatabase()
             await self.db.initialize()
             logger.info("AccessGovernanceCrew initialized with database connection")
-    
-
-    def request_intake_agent(self):
-        """Create the Request Intake Agent."""
-        return self.governance_agents.request_intake_agent()
-    
-
-    def policy_validation_agent(self):
-        """Create the Policy Validation Agent."""
-        return self.governance_agents.policy_validation_agent()
-    
-    @agent 
-    def risk_scoring_agent(self):
-        """Create the Risk Scoring Agent."""
-        return self.governance_agents.risk_scoring_agent()
-    
-
-    def approval_routing_agent(self):
-        """Create the Approval Routing Agent."""
-        return self.governance_agents.approval_routing_agent()
-    
-
-    def audit_trail_agent(self):
-        """Create the Audit Trail Agent."""
-        return self.governance_agents.audit_trail_agent()
-    
-
-    def certification_review_agent(self):
-        """Create the Certification Review Agent."""
-        return self.governance_agents.certification_review_agent()
-    
-
-    def request_intake_task(self):
-        """Create the request intake task."""
-        return self.governance_tasks.request_intake_task()
-    
-
-    def policy_validation_task(self):
-        """Create the policy validation task."""
-        return self.governance_tasks.policy_validation_task()
-    
-
-    def risk_scoring_task(self):
-        """Create the risk scoring task.""" 
-        return self.governance_tasks.risk_scoring_task()
-    
-
-    def approval_routing_task(self):
-        """Create the approval routing task."""
-        return self.governance_tasks.approval_routing_task()
-    
-
-    def audit_trail_task(self):
-        """Create the audit trail task."""
-        return self.governance_tasks.audit_trail_task()
-    
-
-    def certification_review_task(self):
-        """Create the certification review task."""
-        return self.governance_tasks.certification_review_task()
-    
 
     def crew(self) -> Crew:
         """Create and configure the governance crew."""
-        agents = [
-            self.request_intake_agent(),
-            self.policy_validation_agent(),
-            self.risk_scoring_agent(),
-            self.approval_routing_agent(),
-            self.audit_trail_agent(),
-            self.certification_review_agent(),
-        ]
-        tasks = [
-            self.request_intake_task(),
-            self.policy_validation_task(),
-            self.risk_scoring_task(),
-            self.approval_routing_task(),
-            self.audit_trail_task(),
-            self.certification_review_task(),
-        ]
         return Crew(
-            agents=agents,
-            tasks=tasks,
+            agents=self.agents,
+            tasks=self.tasks,
             process=Process.sequential,
             verbose=True,
             memory=True,
@@ -353,9 +295,9 @@ class AccessGovernanceCrew:
                 "review_type": "certification_status"
             }
             
-            # Use just the certification review agent
-            cert_agent = self.certification_review_agent()
-            cert_task = self.certification_review_task()
+            # Use just the certification review agent and task
+            cert_agent = self.agents[-1]  # certification_review_agent is last in list
+            cert_task = self.tasks[-1]   # certification_review_task is last in list
             
             # Create a mini-crew for certification review
             cert_crew = Crew(

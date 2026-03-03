@@ -56,8 +56,6 @@ class GovernanceTasks:
             Request ID: {request_id}
             
             Provide a comprehensive intake report with all gathered context and initial observations.""",
-            
-            agent="request_intake_agent",
             expected_output="""A comprehensive request intake report containing:
             - Request validation status (complete/incomplete/needs clarification)
             - Complete user profile with role, department, tenure, and certification status
@@ -114,8 +112,6 @@ class GovernanceTasks:
             Use the policy_checker tool with the intake data to perform this analysis.
             
             Based on the intake report, provide a comprehensive policy compliance assessment.""",
-            
-            agent="policy_validation_agent",
             expected_output="""A detailed policy compliance report containing:
             - Overall policy compliance status (compliant/violation/requires_review)
             - RBAC rule evaluation results with specific rule references
@@ -127,9 +123,7 @@ class GovernanceTasks:
             - Recommended conditions or constraints for approval
             - Detailed reasoning for each policy decision
             
-            Format: Structured analysis with clear compliance/violation indicators.""",
-            
-            context=[self.request_intake_task()]
+            Format: Structured analysis with clear compliance/violation indicators."""
         )
     
     def risk_scoring_task(self) -> Task:
@@ -180,8 +174,6 @@ class GovernanceTasks:
             Use the risk_scorer and sod_validator tools for comprehensive analysis.
             
             Based on intake and policy reports, provide detailed risk assessment.""",
-            
-            agent="risk_scoring_agent",
             expected_output="""A comprehensive risk assessment report containing:
             - Overall risk score (1-100) with clear risk level designation
             - Detailed risk component breakdown (user, system, access, contextual, policy)
@@ -192,9 +184,7 @@ class GovernanceTasks:
             - Comparative risk analysis against organizational thresholds
             - Mitigation strategies for identified high-risk factors
             
-            Format: Quantitative risk assessment with detailed qualitative analysis.""",
-            
-            context=[self.request_intake_task(), self.policy_validation_task()]
+            Format: Quantitative risk assessment with detailed qualitative analysis."""
         )
     
     def approval_routing_task(self) -> Task:
@@ -243,8 +233,6 @@ class GovernanceTasks:
                 low_risk_threshold=settings.low_risk_threshold,
                 high_risk_threshold=settings.high_risk_threshold
             ),
-            
-            agent="approval_routing_agent",
             expected_output="""A comprehensive approval routing decision containing:
             - Final routing decision (AUTO_APPROVE/STANDARD_APPROVAL/ESCALATED_APPROVAL/DENY/CONDITIONAL)
             - Detailed reasoning for the routing decision with risk and policy factors
@@ -255,9 +243,7 @@ class GovernanceTasks:
             - Expected processing timeline and any urgency considerations
             - Clear next steps for request processing and follow-up actions
             
-            Format: Structured decision with clear action items and requirements.""",
-            
-            context=[self.request_intake_task(), self.policy_validation_task(), self.risk_scoring_task()]
+            Format: Structured decision with clear action items and requirements."""
         )
     
     def audit_trail_task(self) -> Task:
@@ -308,8 +294,6 @@ class GovernanceTasks:
             Use the audit_logger tool to create formal audit records.
             
             Based on all previous analyses and decisions, create comprehensive audit documentation.""",
-            
-            agent="audit_trail_agent",
             expected_output="""A complete audit trail package containing:
             - Formal audit record with all required regulatory fields
             - Comprehensive decision documentation with complete reasoning chain
@@ -322,10 +306,7 @@ class GovernanceTasks:
             - Searchable audit log entries formatted for reporting and analysis
             - Retention and archival instructions for regulatory compliance
             
-            Format: Formal audit documentation meeting financial services regulatory standards.""",
-            
-            context=[self.request_intake_task(), self.policy_validation_task(), 
-                    self.risk_scoring_task(), self.approval_routing_task()]
+            Format: Formal audit documentation meeting financial services regulatory standards."""
         )
     
     def certification_review_task(self) -> Task:
@@ -378,8 +359,6 @@ class GovernanceTasks:
             Use the certification_checker tool for comprehensive validation.
             
             Based on user data and access requirements, validate all certification requirements.""",
-            
-            agent="certification_review_agent",
             expected_output="""A comprehensive certification compliance report containing:
             - Complete certification status summary with current/expired/missing indicators
             - Detailed validation of each required certification with expiration dates
@@ -392,10 +371,7 @@ class GovernanceTasks:
             - Training schedule and renewal calendar for ongoing compliance
             - Documentation supporting certification-related decision factors
             
-            Format: Structured compliance report with clear status indicators and action items.""",
-            
-            context=[self.request_intake_task(), self.policy_validation_task(), 
-                    self.risk_scoring_task(), self.approval_routing_task(), self.audit_trail_task()]
+            Format: Structured compliance report with clear status indicators and action items."""
         )
     
     def get_all_tasks(self) -> List[Task]:
