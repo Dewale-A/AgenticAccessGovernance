@@ -108,7 +108,7 @@ class CertificationReviewResponse(BaseModel):
     recommendations: List[str]
 
 # Background task storage (in production, use Redis or similar)
-background_tasks = {}
+task_storage = {}
 
 @app.on_event("startup")
 async def startup_event():
@@ -247,7 +247,7 @@ async def submit_async_access_request(
             "submitted_at": datetime.now(),
             "request_data": request_data
         }
-        background_tasks[request_id] = background_tasks_storage
+        task_storage[request_id] = background_tasks_storage
         
         # Add background task for processing
         background_tasks.add_task(process_request_async, request_id, request_data)
@@ -274,16 +274,16 @@ async def process_request_async(request_id: str, request_data: Dict[str, Any]):
         logger.info(f"Starting async processing for request {request_id}")
         
         # Update status to processing
-        if request_id in background_tasks:
-            background_tasks[request_id]["status"] = "processing"
-            background_tasks[request_id]["processing_started"] = datetime.now()
+        if request_id in task_storage:
+            task_storage[request_id]["status"] = "processing"
+            task_storage[request_id]["processing_started"] = datetime.now()
         
         # Process through governance workflow
         result = await governance_crew.process_access_request(request_data)
         
         # Update status with results
-        if request_id in background_tasks:
-            background_tasks[request_id].update({
+        if request_id in task_storage:
+            task_storage[request_id].update({
                 "status": "completed",
                 "processing_completed": datetime.now(),
                 "result": result,
@@ -296,8 +296,8 @@ async def process_request_async(request_id: str, request_data: Dict[str, Any]):
         logger.error(f"Error in async processing for request {request_id}: {str(e)}")
         
         # Update status with error
-        if request_id in background_tasks:
-            background_tasks[request_id].update({
+        if request_id in task_storage:
+            task_storage[request_id].update({
                 "status": "error",
                 "error": str(e),
                 "processing_completed": datetime.now()
@@ -318,8 +318,8 @@ async def get_request_status(
         logger.info(f"Getting status for request {request_id}")
         
         # First check background tasks for async requests
-        if request_id in background_tasks:
-            task_info = background_tasks[request_id]
+        if request_id in task_storage:
+            task_info = task_storage[request_id]
             
             response = {
                 "request_id": request_id,
@@ -586,8 +586,8 @@ async def get_system_stats() -> Dict[str, Any]:
     try:
         # In production, this would query actual metrics
         return {
-            "requests_processed_today": len(background_tasks),
-            "active_background_tasks": len([t for t in background_tasks.values() if t["status"] == "processing"]),
+            "requests_processed_today": len(task_storage),
+            "active_background_tasks": len([t for t in task_storage.values() if t["status"] == "processing"]),
             "system_uptime": "N/A",  # Would calculate actual uptime
             "version": "1.0.0"
         }
