@@ -1,0 +1,2 @@
+# Agent configurations are defined programmatically in src/agents/gov_agents.py
+# This file is required by CrewBase but agents are created via Python code

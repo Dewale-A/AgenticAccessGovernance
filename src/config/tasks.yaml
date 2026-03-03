@@ -1,0 +1,2 @@
+# Task configurations are defined programmatically in src/tasks/gov_tasks.py
+# This file is required by CrewBase but tasks are created via Python code
