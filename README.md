@@ -28,6 +28,8 @@ The AgenticAccessGovernance system streamlines and strengthens identity access m
 
 ## Architecture
 
+![AgenticAccessGovernance Architecture](docs/architecture.svg)
+
 The system employs a multi-agent architecture with six specialized AI agents:
 
 1. **Request Intake Agent** - Receives, validates, and classifies incoming access requests
