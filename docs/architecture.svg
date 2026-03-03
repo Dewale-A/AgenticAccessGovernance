@@ -1,289 +1,256 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <!-- Dark background -->
-  <rect width="100%" height="100%" fill="#0D1117"/>
-  
-  <!-- Title -->
-  <text x="600" y="40" text-anchor="middle" fill="#58A6FF" font-family="Arial, sans-serif" font-size="28" font-weight="bold">
-    AgenticAccessGovernance - Architecture Overview
-  </text>
-  
-  <!-- Input Section -->
-  <g id="input-section">
-    <rect x="50" y="80" width="180" height="120" rx="12" fill="#21262D" stroke="#30363D" stroke-width="2"/>
-    <text x="140" y="110" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Access Request</text>
-    <text x="140" y="135" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="12">JSON Input</text>
-    <text x="140" y="155" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="11">• User ID</text>
-    <text x="140" y="170" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="11">• System ID</text>
-    <text x="140" y="185" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="11">• Access Level</text>
-  </g>
-  
-  <!-- Arrow from input to agents -->
-  <path d="M 240 140 L 280 140" stroke="#58A6FF" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-  
-  <!-- Agents Pipeline -->
-  <g id="agents-pipeline">
-    
-    <!-- Agent 1: Request Intake -->
-    <g id="agent-1">
-      <defs>
-        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#1F6FEB;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#0969DA;stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <rect x="290" y="80" width="160" height="120" rx="20" fill="url(#gradient1)" stroke="#58A6FF" stroke-width="2"/>
-      <circle cx="330" cy="110" r="15" fill="#F0F6FC"/>
-      <text x="330" y="115" text-anchor="middle" fill="#0D1117" font-family="Arial, sans-serif" font-size="16">📥</text>
-      <text x="390" y="110" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Request Intake</text>
-      <text x="390" y="130" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Agent</text>
-      <text x="370" y="155" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Validates requests</text>
-      <text x="370" y="170" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Gathers context</text>
-      <text x="370" y="185" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Classifies requests</text>
-    </g>
-    
-    <!-- Arrow -->
-    <path d="M 460 140 L 490 140" stroke="#58A6FF" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-    
-    <!-- Agent 2: Policy Validation -->
-    <g id="agent-2">
-      <defs>
-        <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#238636;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#196F3D;stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <rect x="500" y="80" width="160" height="120" rx="20" fill="url(#gradient2)" stroke="#3FB950" stroke-width="2"/>
-      <circle cx="540" cy="110" r="15" fill="#F0F6FC"/>
-      <text x="540" y="115" text-anchor="middle" fill="#0D1117" font-family="Arial, sans-serif" font-size="16">⚖️</text>
-      <text x="600" y="110" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Policy Validation</text>
-      <text x="600" y="130" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Agent</text>
-      <text x="580" y="155" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• RBAC rules</text>
-      <text x="580" y="170" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Regulatory checks</text>
-      <text x="580" y="185" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Policy compliance</text>
-    </g>
-    
-    <!-- Arrow -->
-    <path d="M 670 140 L 700 140" stroke="#58A6FF" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-    
-    <!-- Agent 3: Risk Scoring -->
-    <g id="agent-3">
-      <defs>
-        <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#BC4C00;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#A04100;stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <rect x="710" y="80" width="160" height="120" rx="20" fill="url(#gradient3)" stroke="#FB8500" stroke-width="2"/>
-      <circle cx="750" cy="110" r="15" fill="#F0F6FC"/>
-      <text x="750" y="115" text-anchor="middle" fill="#0D1117" font-family="Arial, sans-serif" font-size="16">⚡</text>
-      <text x="810" y="110" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Risk Scoring</text>
-      <text x="810" y="130" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Agent</text>
-      <text x="790" y="155" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Multi-factor analysis</text>
-      <text x="790" y="170" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Risk quantification</text>
-      <text x="790" y="185" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Anomaly detection</text>
-    </g>
-    
-    <!-- Arrow -->
-    <path d="M 880 140 L 920 140" stroke="#58A6FF" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-    
-    <!-- Agent 4: Approval Routing -->
-    <g id="agent-4">
-      <defs>
-        <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#8957E5;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <rect x="930" y="80" width="160" height="120" rx="20" fill="url(#gradient4)" stroke="#A5A5FF" stroke-width="2"/>
-      <circle cx="970" cy="110" r="15" fill="#F0F6FC"/>
-      <text x="970" y="115" text-anchor="middle" fill="#0D1117" font-family="Arial, sans-serif" font-size="16">🔀</text>
-      <text x="1030" y="110" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Approval Routing</text>
-      <text x="1030" y="130" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Agent</text>
-      <text x="1010" y="155" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Auto-approve (&lt;30)</text>
-      <text x="1010" y="170" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Recommend (30-70)</text>
-      <text x="1010" y="185" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Escalate (&gt;70)</text>
-    </g>
-    
-    <!-- Agent 5: Audit Trail (below) -->
-    <g id="agent-5">
-      <defs>
-        <linearGradient id="gradient5" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#DA3633;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#CF222E;stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <rect x="500" y="280" width="160" height="120" rx="20" fill="url(#gradient5)" stroke="#F85149" stroke-width="2"/>
-      <circle cx="540" cy="310" r="15" fill="#F0F6FC"/>
-      <text x="540" y="315" text-anchor="middle" fill="#0D1117" font-family="Arial, sans-serif" font-size="16">📝</text>
-      <text x="600" y="310" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Audit Trail</text>
-      <text x="600" y="330" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Agent</text>
-      <text x="580" y="355" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Decision logging</text>
-      <text x="580" y="370" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Compliance trail</text>
-      <text x="580" y="385" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Traceability</text>
-    </g>
-    
-    <!-- Agent 6: Certification Review (below) -->
-    <g id="agent-6">
-      <defs>
-        <linearGradient id="gradient6" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#6F42C1;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#5A32A3;stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <rect x="710" y="280" width="160" height="120" rx="20" fill="url(#gradient6)" stroke="#8B5CF6" stroke-width="2"/>
-      <circle cx="750" cy="310" r="15" fill="#F0F6FC"/>
-      <text x="750" y="315" text-anchor="middle" fill="#0D1117" font-family="Arial, sans-serif" font-size="16">🎓</text>
-      <text x="810" y="310" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Certification</text>
-      <text x="810" y="330" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Review Agent</text>
-      <text x="790" y="355" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Training validation</text>
-      <text x="790" y="370" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Background checks</text>
-      <text x="790" y="385" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="11">• Cert renewals</text>
-    </g>
-    
-    <!-- Connecting lines to lower agents -->
-    <path d="M 580 220 L 580 260" stroke="#58A6FF" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
-    <path d="M 790 220 L 790 260" stroke="#58A6FF" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
-  </g>
-  
-  <!-- Tools Section -->
-  <g id="tools-section">
-    <text x="150" y="480" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="18" font-weight="bold">AI Tools</text>
-    
-    <!-- Tool cards -->
-    <g id="tool-1">
-      <rect x="50" y="500" width="140" height="80" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1" style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));"/>
-      <text x="120" y="525" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Policy Checker</text>
-      <text x="120" y="545" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">RBAC validation</text>
-      <text x="120" y="560" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">Regulatory compliance</text>
-    </g>
-    
-    <g id="tool-2">
-      <rect x="210" y="500" width="140" height="80" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1" style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));"/>
-      <text x="280" y="525" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Risk Scorer</text>
-      <text x="280" y="545" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">Multi-factor analysis</text>
-      <text x="280" y="560" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">Risk quantification</text>
-    </g>
-    
-    <g id="tool-3">
-      <rect x="370" y="500" width="140" height="80" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1" style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));"/>
-      <text x="440" y="525" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">SoD Validator</text>
-      <text x="440" y="545" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">Segregation of duties</text>
-      <text x="440" y="560" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">Conflict detection</text>
-    </g>
-    
-    <g id="tool-4">
-      <rect x="530" y="500" width="140" height="80" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1" style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));"/>
-      <text x="600" y="525" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Audit Logger</text>
-      <text x="600" y="545" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">Decision tracking</text>
-      <text x="600" y="560" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">Compliance logging</text>
-    </g>
-    
-    <!-- Connecting lines from agents to tools (dashed) -->
-    <path d="M 370 220 L 120 480" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
-    <path d="M 580 220 L 280 480" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
-    <path d="M 790 220 L 440 480" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
-    <path d="M 580 420 L 600 480" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
-  </g>
-  
-  <!-- Knowledge Base Section -->
-  <g id="knowledge-section">
-    <text x="950" y="480" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Knowledge Base</text>
-    
-    <g id="kb-1">
-      <rect x="750" y="500" width="120" height="60" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
-      <text x="810" y="520" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Users &amp; Roles</text>
-      <text x="810" y="540" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">JSON seed data</text>
-    </g>
-    
-    <g id="kb-2">
-      <rect x="890" y="500" width="120" height="60" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
-      <text x="950" y="520" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Policies</text>
-      <text x="950" y="540" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">RBAC &amp; SoD rules</text>
-    </g>
-    
-    <g id="kb-3">
-      <rect x="1030" y="500" width="120" height="60" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
-      <text x="1090" y="520" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Systems</text>
-      <text x="1090" y="540" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">Sensitivity tiers</text>
-    </g>
-    
-    <!-- SQLite database -->
-    <g id="database">
-      <rect x="850" y="590" width="140" height="60" rx="8" fill="#6F42C1" stroke="#8B5CF6" stroke-width="2"/>
-      <text x="920" y="610" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">SQLite Database</text>
-      <text x="920" y="630" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Persistent storage</text>
-    </g>
-    
-    <!-- Connecting lines from KB to database -->
-    <path d="M 810 570 L 890 580" stroke="#8B949E" stroke-width="1" fill="none"/>
-    <path d="M 950 570 L 920 580" stroke="#8B949E" stroke-width="1" fill="none"/>
-    <path d="M 1090 570 L 950 580" stroke="#8B949E" stroke-width="1" fill="none"/>
-  </g>
-  
-  <!-- Output Section -->
-  <g id="output-section">
-    <rect x="950" y="240" width="180" height="120" rx="12" fill="#21262D" stroke="#30363D" stroke-width="2"/>
-    <text x="1040" y="270" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Governance Decision</text>
-    <text x="1040" y="295" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="12">Final Output</text>
-    <text x="1040" y="315" text-anchor="middle" fill="#3FB950" font-family="Arial, sans-serif" font-size="11">✓ APPROVED</text>
-    <text x="1040" y="330" text-anchor="middle" fill="#F85149" font-family="Arial, sans-serif" font-size="11">✗ DENIED</text>
-    <text x="1040" y="345" text-anchor="middle" fill="#FB8500" font-family="Arial, sans-serif" font-size="11">⚠ ESCALATED</text>
-  </g>
-  
-  <!-- Arrow from approval routing to output -->
-  <path d="M 1100 140 L 1040 220" stroke="#58A6FF" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-  
-  <!-- Technology Badges -->
-  <g id="tech-badges">
-    <text x="100" y="700" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Technology Stack</text>
-    
-    <!-- CrewAI Badge -->
-    <g id="crewai-badge">
-      <rect x="50" y="720" width="80" height="30" rx="15" fill="#1F6FEB"/>
-      <text x="90" y="740" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">CrewAI</text>
-    </g>
-    
-    <!-- OpenAI Badge -->
-    <g id="openai-badge">
-      <rect x="150" y="720" width="80" height="30" rx="15" fill="#238636"/>
-      <text x="190" y="740" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">OpenAI</text>
-    </g>
-    
-    <!-- Python Badge -->
-    <g id="python-badge">
-      <rect x="250" y="720" width="80" height="30" rx="15" fill="#BC4C00"/>
-      <text x="290" y="740" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Python</text>
-    </g>
-    
-    <!-- FastAPI Badge -->
-    <g id="fastapi-badge">
-      <rect x="350" y="720" width="80" height="30" rx="15" fill="#8957E5"/>
-      <text x="390" y="740" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">FastAPI</text>
-    </g>
-    
-    <!-- Docker Badge -->
-    <g id="docker-badge">
-      <rect x="450" y="720" width="80" height="30" rx="15" fill="#DA3633"/>
-      <text x="490" y="740" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Docker</text>
-    </g>
-    
-    <!-- SQLite Badge -->
-    <g id="sqlite-badge">
-      <rect x="550" y="720" width="80" height="30" rx="15" fill="#6F42C1"/>
-      <text x="590" y="740" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">SQLite</text>
-    </g>
-  </g>
-  
-  <!-- Arrow marker definition -->
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
       <polygon points="0 0, 10 3.5, 0 7" fill="#58A6FF"/>
     </marker>
+    <marker id="arrow-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8B949E"/>
+    </marker>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F6FEB"/><stop offset="100%" stop-color="#0969DA"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#238636"/><stop offset="100%" stop-color="#196F3D"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BC4C00"/><stop offset="100%" stop-color="#A04100"/>
+    </linearGradient>
+    <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8957E5"/><stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DA3633"/><stop offset="100%" stop-color="#CF222E"/>
+    </linearGradient>
+    <linearGradient id="g6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6F42C1"/><stop offset="100%" stop-color="#5A32A3"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
   </defs>
-  
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#0D1117"/>
+
+  <!-- Title -->
+  <text x="700" y="45" text-anchor="middle" fill="#58A6FF" font-family="Arial, sans-serif" font-size="28" font-weight="bold">AgenticAccessGovernance — System Architecture</text>
+  <text x="700" y="70" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="14">AI-Powered Identity &amp; Access Management Governance for Financial Services</text>
+
+  <!-- ========== ROW 1: INPUT → 3 AGENTS ========== -->
+
+  <!-- Input Box -->
+  <rect x="40" y="120" width="160" height="130" rx="12" fill="#21262D" stroke="#30363D" stroke-width="2" filter="url(#shadow)"/>
+  <text x="120" y="150" text-anchor="middle" fill="#58A6FF" font-family="Arial, sans-serif" font-size="15" font-weight="bold">Access Request</text>
+  <text x="120" y="172" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="11">REST API / JSON</text>
+  <line x1="70" y1="182" x2="170" y2="182" stroke="#30363D" stroke-width="1"/>
+  <text x="120" y="200" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="11">User ID · System ID</text>
+  <text x="120" y="216" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="11">Access Level · Justification</text>
+  <text x="120" y="232" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="11">Emergency Flag</text>
+
+  <!-- Arrow: Input → Agent 1 -->
+  <line x1="200" y1="185" x2="260" y2="185" stroke="#58A6FF" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Agent 1: Request Intake -->
+  <rect x="270" y="120" width="190" height="130" rx="20" fill="url(#g1)" stroke="#58A6FF" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="300" cy="148" r="14" fill="rgba(255,255,255,0.2)"/>
+  <text x="300" y="153" text-anchor="middle" fill="#fff" font-size="14">1</text>
+  <text x="380" y="148" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Request Intake</text>
+  <text x="380" y="165" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Agent</text>
+  <line x1="290" y1="178" x2="440" y2="178" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="365" y="196" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Validates requests</text>
+  <text x="365" y="211" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Gathers user context</text>
+  <text x="365" y="226" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Classifies &amp; prioritizes</text>
+
+  <!-- Arrow: Agent 1 → Agent 2 -->
+  <line x1="460" y1="185" x2="520" y2="185" stroke="#58A6FF" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Agent 2: Policy Validation -->
+  <rect x="530" y="120" width="190" height="130" rx="20" fill="url(#g2)" stroke="#3FB950" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="560" cy="148" r="14" fill="rgba(255,255,255,0.2)"/>
+  <text x="560" y="153" text-anchor="middle" fill="#fff" font-size="14">2</text>
+  <text x="640" y="148" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Policy Validation</text>
+  <text x="640" y="165" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Agent</text>
+  <line x1="550" y1="178" x2="700" y2="178" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="625" y="196" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">RBAC rule evaluation</text>
+  <text x="625" y="211" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Regulatory compliance</text>
+  <text x="625" y="226" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Sensitivity tier checks</text>
+
+  <!-- Arrow: Agent 2 → Agent 3 -->
+  <line x1="720" y1="185" x2="780" y2="185" stroke="#58A6FF" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Agent 3: Risk Scoring -->
+  <rect x="790" y="120" width="190" height="130" rx="20" fill="url(#g3)" stroke="#FB8500" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="820" cy="148" r="14" fill="rgba(255,255,255,0.2)"/>
+  <text x="820" y="153" text-anchor="middle" fill="#fff" font-size="14">3</text>
+  <text x="900" y="148" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Risk Scoring</text>
+  <text x="900" y="165" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Agent</text>
+  <line x1="810" y1="178" x2="960" y2="178" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="885" y="196" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Multi-factor analysis</text>
+  <text x="885" y="211" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">SoD conflict detection</text>
+  <text x="885" y="226" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Risk score (1-100)</text>
+
+  <!-- ========== ROW 2: 3 MORE AGENTS → OUTPUT ========== -->
+
+  <!-- Arrow: Agent 3 → Agent 4 (down-right) -->
+  <path d="M 885 250 L 885 290 L 365 290 L 365 320" stroke="#58A6FF" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Agent 4: Approval Routing -->
+  <rect x="270" y="330" width="190" height="130" rx="20" fill="url(#g4)" stroke="#A5A5FF" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="300" cy="358" r="14" fill="rgba(255,255,255,0.2)"/>
+  <text x="300" y="363" text-anchor="middle" fill="#fff" font-size="14">4</text>
+  <text x="380" y="358" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Approval Routing</text>
+  <text x="380" y="375" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Agent</text>
+  <line x1="290" y1="388" x2="440" y2="388" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="365" y="406" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Auto-approve (risk &lt;30)</text>
+  <text x="365" y="421" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Standard approval (30-70)</text>
+  <text x="365" y="436" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Escalate (risk &gt;70)</text>
+
+  <!-- Arrow: Agent 4 → Agent 5 -->
+  <line x1="460" y1="395" x2="520" y2="395" stroke="#58A6FF" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Agent 5: Audit Trail -->
+  <rect x="530" y="330" width="190" height="130" rx="20" fill="url(#g5)" stroke="#F85149" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="560" cy="358" r="14" fill="rgba(255,255,255,0.2)"/>
+  <text x="560" y="363" text-anchor="middle" fill="#fff" font-size="14">5</text>
+  <text x="640" y="358" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Audit Trail</text>
+  <text x="640" y="375" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Agent</text>
+  <line x1="550" y1="388" x2="700" y2="388" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="625" y="406" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Decision documentation</text>
+  <text x="625" y="421" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Compliance logging</text>
+  <text x="625" y="436" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Full traceability</text>
+
+  <!-- Arrow: Agent 5 → Agent 6 -->
+  <line x1="720" y1="395" x2="780" y2="395" stroke="#58A6FF" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Agent 6: Certification Review -->
+  <rect x="790" y="330" width="190" height="130" rx="20" fill="url(#g6)" stroke="#8B5CF6" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="820" cy="358" r="14" fill="rgba(255,255,255,0.2)"/>
+  <text x="820" y="363" text-anchor="middle" fill="#fff" font-size="14">6</text>
+  <text x="900" y="358" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Certification Review</text>
+  <text x="900" y="375" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="13" font-weight="bold">Agent</text>
+  <line x1="810" y1="388" x2="960" y2="388" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="885" y="406" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Training validation</text>
+  <text x="885" y="421" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Background checks</text>
+  <text x="885" y="436" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Cert renewal tracking</text>
+
+  <!-- Arrow: Agent 6 → Output -->
+  <line x1="980" y1="395" x2="1060" y2="395" stroke="#58A6FF" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Output Box -->
+  <rect x="1070" y="320" width="180" height="150" rx="12" fill="#21262D" stroke="#3FB950" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1160" y="350" text-anchor="middle" fill="#3FB950" font-family="Arial, sans-serif" font-size="15" font-weight="bold">Governance</text>
+  <text x="1160" y="368" text-anchor="middle" fill="#3FB950" font-family="Arial, sans-serif" font-size="15" font-weight="bold">Decision</text>
+  <line x1="1090" y1="380" x2="1230" y2="380" stroke="#30363D" stroke-width="1"/>
+  <text x="1160" y="400" text-anchor="middle" fill="#3FB950" font-family="Arial, sans-serif" font-size="12">✓ APPROVED</text>
+  <text x="1160" y="418" text-anchor="middle" fill="#FB8500" font-family="Arial, sans-serif" font-size="12">⚠ CONDITIONAL</text>
+  <text x="1160" y="436" text-anchor="middle" fill="#F85149" font-family="Arial, sans-serif" font-size="12">✗ DENIED</text>
+  <text x="1160" y="454" text-anchor="middle" fill="#A5A5FF" font-family="Arial, sans-serif" font-size="12">↑ ESCALATED</text>
+
+  <!-- ========== TOOLS SECTION ========== -->
+  <text x="120" y="540" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Custom Tools</text>
+  <line x1="50" y1="550" x2="680" y2="550" stroke="#21262D" stroke-width="1"/>
+
+  <rect x="50" y="565" width="120" height="55" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="110" y="588" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Policy Checker</text>
+  <text x="110" y="605" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">RBAC · Regulatory</text>
+
+  <rect x="185" y="565" width="120" height="55" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="245" y="588" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Risk Scorer</text>
+  <text x="245" y="605" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">Multi-factor scoring</text>
+
+  <rect x="320" y="565" width="120" height="55" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="380" y="588" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">SoD Validator</text>
+  <text x="380" y="605" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">Duty conflict detection</text>
+
+  <rect x="455" y="565" width="120" height="55" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="515" y="588" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Audit Logger</text>
+  <text x="515" y="605" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">Decision tracking</text>
+
+  <rect x="590" y="565" width="120" height="55" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="650" y="588" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Cert Checker</text>
+  <text x="650" y="605" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">Training validation</text>
+
+  <!-- Dashed lines from agent row to tools -->
+  <path d="M 365 460 L 110 560" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+  <path d="M 625 460 L 245 560" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+  <path d="M 885 250 L 380 560" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+  <path d="M 625 460 L 515 560" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+  <path d="M 885 460 L 650 560" stroke="#8B949E" stroke-width="1" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+
+  <!-- ========== KNOWLEDGE BASE ========== -->
+  <text x="920" y="540" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Knowledge Base</text>
+  <line x1="790" y1="550" x2="1350" y2="550" stroke="#21262D" stroke-width="1"/>
+
+  <rect x="790" y="565" width="130" height="55" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="855" y="588" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Users &amp; Roles</text>
+  <text x="855" y="605" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">users.json</text>
+
+  <rect x="935" y="565" width="130" height="55" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="1000" y="588" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Policies &amp; Rules</text>
+  <text x="1000" y="605" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">policies.json</text>
+
+  <rect x="1080" y="565" width="130" height="55" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="1145" y="588" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Systems</text>
+  <text x="1145" y="605" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">systems.json</text>
+
+  <rect x="1225" y="565" width="130" height="55" rx="8" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="1290" y="588" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Entitlements</text>
+  <text x="1290" y="605" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="9">entitlements.json</text>
+
+  <!-- SQLite Database -->
+  <rect x="970" y="645" width="160" height="50" rx="10" fill="#6F42C1" stroke="#8B5CF6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1050" y="668" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">SQLite Database</text>
+  <text x="1050" y="685" text-anchor="middle" fill="#E6EDF3" font-family="Arial, sans-serif" font-size="10">Persistent Storage</text>
+
+  <!-- KB → Database arrows -->
+  <line x1="855" y1="620" x2="990" y2="645" stroke="#8B949E" stroke-width="1" marker-end="url(#arrow-gray)"/>
+  <line x1="1000" y1="620" x2="1040" y2="645" stroke="#8B949E" stroke-width="1" marker-end="url(#arrow-gray)"/>
+  <line x1="1145" y1="620" x2="1080" y2="645" stroke="#8B949E" stroke-width="1" marker-end="url(#arrow-gray)"/>
+  <line x1="1290" y1="620" x2="1110" y2="645" stroke="#8B949E" stroke-width="1" marker-end="url(#arrow-gray)"/>
+
+  <!-- ========== FASTAPI LAYER ========== -->
+  <rect x="1070" y="120" width="180" height="130" rx="12" fill="#21262D" stroke="#58A6FF" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1160" y="150" text-anchor="middle" fill="#58A6FF" font-family="Arial, sans-serif" font-size="15" font-weight="bold">FastAPI</text>
+  <text x="1160" y="168" text-anchor="middle" fill="#58A6FF" font-family="Arial, sans-serif" font-size="15" font-weight="bold">REST API</text>
+  <line x1="1090" y1="178" x2="1230" y2="178" stroke="#30363D" stroke-width="1"/>
+  <text x="1160" y="196" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">POST /api/v1/request</text>
+  <text x="1160" y="211" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">GET  /api/v1/request/{id}</text>
+  <text x="1160" y="226" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">GET  /api/v1/health</text>
+  <text x="1160" y="241" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="10">+ 5 more endpoints</text>
+
+  <!-- Arrow: FastAPI → Input (orchestrates) -->
+  <path d="M 1070 185 L 1040 185 L 1040 95 L 120 95 L 120 120" stroke="#58A6FF" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#arrow)"/>
+  <text x="580" y="88" text-anchor="middle" fill="#58A6FF" font-family="Arial, sans-serif" font-size="10" font-style="italic">orchestrates sequential workflow</text>
+
+  <!-- ========== TECH BADGES ========== -->
+  <text x="120" y="760" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Technology Stack</text>
+
+  <rect x="50" y="775" width="85" height="28" rx="14" fill="#1F6FEB"/>
+  <text x="92" y="794" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">CrewAI</text>
+
+  <rect x="150" y="775" width="85" height="28" rx="14" fill="#238636"/>
+  <text x="192" y="794" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">OpenAI</text>
+
+  <rect x="250" y="775" width="85" height="28" rx="14" fill="#BC4C00"/>
+  <text x="292" y="794" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Python</text>
+
+  <rect x="350" y="775" width="85" height="28" rx="14" fill="#8957E5"/>
+  <text x="392" y="794" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">FastAPI</text>
+
+  <rect x="450" y="775" width="85" height="28" rx="14" fill="#DA3633"/>
+  <text x="492" y="794" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Docker</text>
+
+  <rect x="550" y="775" width="85" height="28" rx="14" fill="#6F42C1"/>
+  <text x="592" y="794" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">SQLite</text>
+
+  <rect x="650" y="775" width="85" height="28" rx="14" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+  <text x="692" y="794" text-anchor="middle" fill="#F0F6FC" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Pydantic</text>
+
+  <!-- Sequential Flow Label -->
+  <rect x="50" y="280" width="200" height="30" rx="5" fill="none" stroke="#30363D" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="150" y="300" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="11">Sequential Agent Pipeline</text>
+
   <!-- Footer -->
-  <text x="600" y="780" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="12" font-style="italic">
-    AI-Powered Identity Access Management for Financial Services
-  </text>
+  <text x="700" y="860" text-anchor="middle" fill="#8B949E" font-family="Arial, sans-serif" font-size="12" font-style="italic">AgenticAccessGovernance v1.0 — Dewale-A · Built with CrewAI Multi-Agent Framework</text>
 </svg>
