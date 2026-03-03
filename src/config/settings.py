@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     api_debug: bool = False
     
     # Security
-    secret_key: str
+    secret_key: str = "dev-secret-key-change-in-production"
     
     # Logging
     log_level: str = "INFO"
