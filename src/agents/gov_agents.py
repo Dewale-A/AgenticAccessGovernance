@@ -3,8 +3,14 @@ Governance Agents - Six specialized AI agents for access governance workflow.
 Each agent has specific expertise in different aspects of IAM governance.
 """
 
+import os
 import logging
 from typing import List
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Load .env before any CrewAI imports that need API keys
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 from crewai import Agent
 from crewai_tools import FileReadTool, JSONSearchTool
