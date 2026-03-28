@@ -1,5 +1,7 @@
 # Agentic Access Governance
 
+![CI](https://github.com/Dewale-A/AgenticAccessGovernance/actions/workflows/ci.yml/badge.svg)
+
 An AI-powered Identity and Access Management (IAM) governance system designed specifically for financial services organizations. This system provides automated access request processing, policy validation, risk assessment, and regulatory compliance monitoring using intelligent agents powered by CrewAI.
 
 ## Overview
